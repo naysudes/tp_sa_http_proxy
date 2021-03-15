@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
-	proxy "https://github.com/naysudes/tp_sa_http_proxy/proxy"
+	"log"
+
+	proxy "github.com/naysudes/tp_sa_http_proxy/proxy"
 )
 
 func main() {
