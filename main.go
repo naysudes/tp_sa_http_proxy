@@ -8,10 +8,9 @@ import (
 )
 
 func main() {
-	app, err := proxy.NewServer(config)
+	app, err := proxy.NewServer()
 	if err != nil {
 		log.Fatal(fmt.Sprintf("Error: %s", err.Error()))
 	}
-	defer app.Close()
 	app.Run()
 }

@@ -21,7 +21,7 @@ type Server struct {
 	//db         *database.DB
 }
 
-func NewServer(config Config) (*Server, error) {
+func NewServer() (*Server, error) {
 	var err error
 	server := Server{
 		httpClient: new(http.Client),
