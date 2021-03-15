@@ -1,14 +1,15 @@
 package main
 
 import (
-	"http-proxy/proxy"
-	"log"
-	"net/http"
+	"fmt"
+	proxy "https://github.com/naysudes/tp_sa_http_proxy/proxy"
 )
 
 func main() {
-	p := &proxy.Proxy{}
-	if err := http.ListenAndServe("127.0.0.1:8080", p); err != nil {
-		log.Fatalf(err.Error())
+	app, err := proxy.NewServer(config)
+	if err != nil {
+		log.Fatal(fmt.Sprintf("Error: %s", err.Error()))
 	}
+	defer app.Close()
+	app.Run()
 }
