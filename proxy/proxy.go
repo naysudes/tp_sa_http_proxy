@@ -7,25 +7,14 @@ import (
 	"time"
 )
 
-const (
-	OKHeader = "HTTP/1.1 200 OK\r\n\r\n"
-)
-
-type Config struct {
-	Listen string `yaml:"listen"`
-	//Db      DBConfig `yaml:"db"`
-}
-
 type Server struct {
 	httpClient *http.Client
-	//db         *database.DB
 }
 
 func NewServer() (*Server, error) {
 	var err error
 	server := Server{
 		httpClient: new(http.Client),
-		//db:       db,
 	}
 	server.httpClient.Timeout = 5 * time.Second
 	if err != nil {
@@ -48,7 +37,6 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			log.Println(err)
 		}
 	}()
-	//requestLogger(r, s.log)
 	if r.Method == http.MethodConnect {
 		s.HandleHttps(w, r)
 	} else {
